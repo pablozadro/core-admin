@@ -1,0 +1,21 @@
+{% extends "core/layout.html" %}
+{% load static %}
+{% block content %}
+<section style="text-align: center; margin-top: 10%;">
+  <header>
+    <h1>Core Admin</h1>
+  </header>
+
+  <image 
+    src="{% static 'images/core/brand/core-brand-black.png' %}" 
+    alt="Core brand" 
+    style="display: inline-block; width:150px; margin:2rem auto;" />
+
+  {% if request.user.is_authenticated %}
+    <p>Welcome <a href="{% url 'accounts:profile' %}" >{{ request.user.email }}</a></p>
+  {% else %}
+    <p>You must authenticate. <a href="{% url 'accounts:login' %}" >Login</a></p>
+  {% endif %}
+  
+</section>
+{% endblock content %}

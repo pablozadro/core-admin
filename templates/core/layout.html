@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% block styles %}
+    <link href="{% static 'css/core.css' %}" crossorigin="anonymous" rel="stylesheet">
+  {% endblock styles %}
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon-32.png' %}"/>
+  <title>Core-Admin</title>
+</head>
+<body>
+
+  {% block content %}{% endblock content %}
+
+  {% block scripts %}
+    <script src="{% static 'js/core.js' %}"></script>
+  {% endblock scripts %}
+</body>
+</html>
