@@ -7,17 +7,55 @@
 
   {% block styles %}
     <link href="{% static 'css/core.css' %}" crossorigin="anonymous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" crossorigin="anonymous" rel="stylesheet">
   {% endblock styles %}
 
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon-32.png' %}"/>
   <title>Core-Admin</title>
 </head>
 <body>
-
-  {% block content %}{% endblock content %}
-
+  {% block modals %}{% endblock modals %}
+  <div class="app">
+    <nav class="topnav">
+      <a class="topnav__brand" href="{% url 'landing:home' %}"></a>
+      <div class="topnav__content">
+        <ul class="topnav__menu">
+          <li>
+            <a class="link black" href="{% url 'landing:home' %}">Inicio</a>
+          </li>
+        </ul>
+        <ul class="topnav__menu">
+          {% if request.user.is_authenticated %}
+            <li>
+              <a class="link black" href="{% url 'accounts:profile' %}">
+                {{ request.user.email }}
+              </a>
+            </li>
+          {% else %}
+            <li>
+              <a class="link black" href="#">
+                <i class="material-icons">account_circle</i><span> Login</span>
+              </a>
+            </li>
+            <li>
+              <a class="gray-btn" href="#">
+                <i class="material-icons">send</i><span> Register</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      <button class="topnav__toggler" data-event="topnav:toggle" href="#">
+        <i class="material-icons">menu</i>
+      </button>
+    </nav>
+    <div class="app__content">
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+  
   {% block scripts %}
-    <script src="{% static 'js/core.js' %}"></script>
+    <script src="{% static 'js/core.bundle.js' %}"></script>
   {% endblock scripts %}
 </body>
 </html>
