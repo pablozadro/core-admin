@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {% block scripts %}
+    <script src="http://localhost:3601/js/core-x.bundle.min.js" defer></script>
+  {% endblock scripts %}
+
+  {% block styles %}
+    <link href="{% static 'css/main.css' %}" crossorigin="anonymous" rel="stylesheet">
+    <link 
+      href="http://localhost:3601/fonts/material-design-icons/iconfont/material-icons.css" 
+      crossorigin="anonymous" 
+      rel="stylesheet">
+  {% endblock styles %}
+
+  <link rel="shortcut icon" type="image/png" href="http://localhost:3601/favicon/favicon-32.png"/>
+  <title>Monify Admin</title>
+</head>
+<body>
+  {% block modals %}{% endblock modals %}
+
+  <div class="topnav">
+    <a class="topnav__brand" href="/"></a>
+    <div class="topnav__content" data-element="topnav__content">
+      <nav class="topnav__content__main">
+        <ul class="topnav__list">
+          <li><a class="topnav__link" href="{% url 'landing:home' %}">Home</a></li>
+        </ul>
+      </nav>
+      <nav class="topnav__content__secondary">
+        <ul class="topnav__list">
+          {% if request.user.is_authenticated %}
+            <li>
+              <a class="topnav__link" href="{% url 'accounts:profile' %}">
+                <i class="material-icons">account_circle</i><span> {{ request.user.email }}</span>
+              </a>
+            </li>
+            <li>
+              <a class="topnav__link" href="/admin"><i class="material-icons">settings</i></a>
+            </li>
+            <li>
+              <a class="topnav__link" href="{% url 'accounts:logout' %}">Logout</a>
+            </li>
+          {% else %}
+            <li>
+              <a class="topnav__link" href="{% url 'accounts:login' %}" >
+                <i class="material-icons">account_circle</i><span> Login</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <button class="topnav__toggler" data-element="topnav__toggler" href="#">
+      <i class="material-icons">menu</i>
+    </button>
+  </div>
+
+  <div class="app">
+    <div class="box">
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+
+</body>
+</html>

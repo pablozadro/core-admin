@@ -1,0 +1,13 @@
+{
+  "name": "core-admin-ui",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "sass:watch": "sass src/sass/index.scss public/css/main.css --style=expanded --watch",
+    "sass:build": "sass src/sass/index.scss public/css/main.css --style=compressed"
+  },
+  "dependencies": {
+    "sass": "^1.43.2"
+  },
+  "devDependencies": {}
+}

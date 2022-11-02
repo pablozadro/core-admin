@@ -1,0 +1,14 @@
+{% extends "core/layout.html" %}
+{% block content %}
+<section class="align-center" style="margin-top: 10%;">
+  <header>
+    <h1 class="title lg">Monify Admin</h1>
+  </header>
+  <span class="brand-primary lg"></span>
+  {% if request.user.is_authenticated %}
+    <p>Welcome <a class="primary" href="{% url 'accounts:profile' %}" >{{ request.user.email }}</a></p>
+  {% else %}
+    <p>You must authenticate. <a class="primary" href="{% url 'accounts:login' %}" >Login</a></p>
+  {% endif %}
+</section>
+{% endblock content %}

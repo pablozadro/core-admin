@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "[+] Remove from the Universe"
+
+docker container stop core_admin_db
+docker container stop core_admin_web
+
+docker container rm core_admin_db
+docker container rm core_admin_web
+
+docker image rm core_admin_web
+
+echo "[+] Prune the system"
+
+docker system prune -a --volumes

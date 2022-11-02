@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "[+] Loading fixtures into database..."
+
+# Example
+# python manage.py loaddata apps/<app>/fixtures/<filename>.json

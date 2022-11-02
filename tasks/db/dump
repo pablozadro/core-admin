@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "[+] Dumping fixtures from database..."
+
+# Example
+# python manage.py dumpdata <app>.<Model> --indent=2 --output apps/<app>/fixtures/<filename>.json
